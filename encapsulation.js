@@ -7,14 +7,21 @@ window.HelloWorld = (function() {
     return attachBehaviors();
   };
   attachBehaviors = function() {
-    return console.log('attaching some behaviors to elements');
+    $('#click-me').on('click', handleSendApiRequest);
   };
-  handleSendApiRequest = function() {
+  handleSendApiRequest = function(e) {
     return console.log('sent the API request');
   };
-  return handleFetchApiData = function(data) {
+  handleFetchApiData = function(data) {
     return console.log('manipulate some code already on the page');
   };
+  return {
+    init: init
+  };
 })();
+
+$(function() {
+  return HelloWorld.init();
+});
 
 //# sourceMappingURL=encapsulation.js.map

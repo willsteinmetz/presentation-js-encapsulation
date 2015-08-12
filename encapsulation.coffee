@@ -7,10 +7,16 @@ window.HelloWorld = do ->
     attachBehaviors()
 
   attachBehaviors = ->
-    console.log 'attaching some behaviors to elements'
+    $('#click-me').on 'click', handleSendApiRequest
+    return
 
-  handleSendApiRequest = ->
+  handleSendApiRequest = (e) ->
     console.log 'sent the API request'
 
   handleFetchApiData = (data) ->
     console.log 'manipulate some code already on the page'
+
+  init: init
+
+$ ->
+  HelloWorld.init()
