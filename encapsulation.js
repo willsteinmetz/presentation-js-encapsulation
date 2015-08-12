@@ -10,10 +10,20 @@ window.HelloWorld = (function() {
     $('#click-me').on('click', handleSendApiRequest);
   };
   handleSendApiRequest = function(e) {
-    return console.log('sent the API request');
+    var $target;
+    $target = $(e.currentTarget);
+    $target.prop('disabled', true);
+    console.log('sent the API request');
+    return setTimeout(function() {
+      return handleFetchApiData({
+        message: "Got the data!"
+      }, $target);
+    }, 500);
   };
-  handleFetchApiData = function(data) {
-    return console.log('manipulate some code already on the page');
+  handleFetchApiData = function(data, $target) {
+    console.log('manipulate some code already on the page');
+    alert(data.message);
+    return $target.text('API request successful');
   };
   return {
     init: init

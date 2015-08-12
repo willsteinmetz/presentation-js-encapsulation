@@ -11,10 +11,20 @@ window.HelloWorld = do ->
     return
 
   handleSendApiRequest = (e) ->
+    $target = $(e.currentTarget)
+    $target.prop 'disabled', true
     console.log 'sent the API request'
+    setTimeout(->
+      handleFetchApiData(
+        message: "Got the data!"
+        $target
+      )
+    , 500)
 
-  handleFetchApiData = (data) ->
+  handleFetchApiData = (data, $target) ->
     console.log 'manipulate some code already on the page'
+    alert data.message
+    $target.text 'API request successful'
 
   init: init
 
