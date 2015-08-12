@@ -1,40 +1,31 @@
-window.HelloWorld = (function() {
-  var apiKey, attachBehaviors, handleFetchApiData, handleSendApiRequest, init, known, secret;
-  apiKey = '12345ABCDE';
-  secret = 'No one should know this!';
-  known = 'Anyone can know what this is';
-  init = function() {
-    return attachBehaviors();
-  };
-  attachBehaviors = function() {
-    $('#click-me').on('click', handleSendApiRequest);
-  };
-  handleSendApiRequest = function(e) {
-    var $target;
-    $target = $(e.currentTarget);
-    $target.prop('disabled', true);
-    console.log('sent the API request');
-    return setTimeout(function() {
-      return handleFetchApiData({
-        message: "Got the data!"
-      }, $target);
+window.HelloWorld = {
+  apiKey: '12345ABCDE',
+  secret: 'No one should know this!',
+  known: 'Anyone can know what this is',
+  init: function() {
+    return this.attachBehaviors();
+  },
+  attachBehaviors: function() {
+    $('#click-me').on('click', this.handleSendApiRequest);
+  },
+  handleSendApiRequest: function(e) {
+    var button;
+    button = this;
+    setTimeout(function() {
+      return HelloWorld.handleFetchApiData({
+        message: "Got the API data"
+      }, button);
     }, 500);
-  };
-  handleFetchApiData = function(data, $target) {
-    console.log('manipulate some code already on the page');
+  },
+  handleFetchApiData: function(data, button) {
     alert(data.message);
-    return $target.text('API request successful');
-  };
-  return {
-    init: init,
-    known: function() {
-      return known;
-    }
-  };
-})();
+    $(button).text('Click me again!');
+  }
+};
 
 $(function() {
-  return HelloWorld.init();
+  HelloWorld.init();
+  return alert(HelloWorld.known);
 });
 
 //# sourceMappingURL=encapsulation.js.map

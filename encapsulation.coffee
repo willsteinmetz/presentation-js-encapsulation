@@ -1,34 +1,30 @@
-window.HelloWorld = do ->
-  apiKey = '12345ABCDE'
-  secret = 'No one should know this!'
-  known = 'Anyone can know what this is'
+window.HelloWorld =
+  apiKey: '12345ABCDE',
+  secret: 'No one should know this!',
+  known: 'Anyone can know what this is',
 
-  init = ->
-    attachBehaviors()
+  init: ->
+    @attachBehaviors()
 
-  attachBehaviors = ->
-    $('#click-me').on 'click', handleSendApiRequest
+  attachBehaviors: ->
+    $('#click-me').on 'click', @handleSendApiRequest
     return
 
-  handleSendApiRequest = (e) ->
-    $target = $(e.currentTarget)
-    $target.prop 'disabled', true
-    console.log 'sent the API request'
+  handleSendApiRequest: (e) ->
+    button = @
     setTimeout(->
-      handleFetchApiData(
-        message: "Got the data!"
-        $target
+      HelloWorld.handleFetchApiData(
+        message: "Got the API data"
+        button
       )
-    , 500)
+    500)
+    return
 
-  handleFetchApiData = (data, $target) ->
-    console.log 'manipulate some code already on the page'
+  handleFetchApiData: (data, button) ->
     alert data.message
-    $target.text 'API request successful'
-
-  init: init
-  known: ->
-    known
+    $(button).text 'Click me again!'
+    return
 
 $ ->
   HelloWorld.init()
+  alert HelloWorld.known
