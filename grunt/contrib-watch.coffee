@@ -5,6 +5,11 @@ module.exports = (grunt) ->
       tasks: ['coffee']
       options:
         spawn: false
+    jade:
+      files: ['*.jade']
+      tasks: ['jade']
+      options:
+        spanw: false
   )
 
   grunt.loadNpmTasks 'grunt-contrib-watch'
