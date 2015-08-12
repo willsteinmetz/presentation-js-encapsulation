@@ -1,16 +1,16 @@
-window.HelloWorld = ->
-  apiKey: '12345ABCDE',
-  secret: 'No one should know this!',
-  known: 'Anyone can know what this is',
+window.HelloWorld = do ->
+  apiKey = '12345ABCDE'
+  secret = 'No one should know this!'
+  known = 'Anyone can know what this is'
 
-  init: ->
-    @attachBehaviors()
+  init = ->
+    attachBehaviors()
 
-  attachBehaviors: ->
+  attachBehaviors = ->
     console.log 'attaching some behaviors to elements'
 
-  handleSendApiRequest: ->
+  handleSendApiRequest = ->
     console.log 'sent the API request'
 
-  handleFetchApiData: (data) ->
+  handleFetchApiData = (data) ->
     console.log 'manipulate some code already on the page'
