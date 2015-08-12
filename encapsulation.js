@@ -26,7 +26,10 @@ window.HelloWorld = (function() {
     return $target.text('API request successful');
   };
   return {
-    init: init
+    init: init,
+    known: function() {
+      return known;
+    }
   };
 })();
 

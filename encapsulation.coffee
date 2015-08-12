@@ -27,6 +27,8 @@ window.HelloWorld = do ->
     $target.text 'API request successful'
 
   init: init
+  known: ->
+    known
 
 $ ->
   HelloWorld.init()
